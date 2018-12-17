@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, ScrollView, Text, StyleSheet } from 'react-native';
 // import './ParkFinder.css';
 import ParkList from './ParkList';
 import StateFilter from './StateFilter';
@@ -82,16 +82,21 @@ class ParkFinder extends Component {
           onChange={(state) => this.handleStateFilterChange(state)}
           style={styles.parkFinderStateFilter}
         />
-        <ParkListWithData
-          style={styles.parkFinderParkList}
-        />
+        <ScrollView style={styles.parkList}>
+          <ParkListWithData
+            style={styles.parkFinderParkList}
+          />
+        </ScrollView>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-
+  parkFinder: {
+    height: 400,
+    backgroundColor: '#DDD'
+  }
 });
 
 /* Example usage:

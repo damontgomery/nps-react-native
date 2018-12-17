@@ -108,7 +108,7 @@ class App extends Component {
 const styles = StyleSheet.create({
   app: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
   },
 });
