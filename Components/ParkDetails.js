@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 
 class ParkDetails extends Component {
 
@@ -16,11 +16,13 @@ class ParkDetails extends Component {
       // The original images are massive, ~5 mb to 10mb each. These parameters on the images will serve cropped images.
       let cropUrlParameters = "?width=800&height=450&mode=crop&quality=90";
 
-      // if (this.props.images.length > 0){
-      //   image = (
-      //     <img src={this.props.images[0].url + cropUrlParameters} alt={this.props.images[0].altText}/>
-      //   );
-      // }
+      if (this.props.images.length > 0){
+        let imageUrl = this.props.images[0].url + cropUrlParameters;
+
+        image = (
+          <Image style={styles.image} source={{uri: imageUrl}}/>
+        );
+      }
 
       content = (
         <View style={styles.content}>
@@ -50,7 +52,9 @@ class ParkDetails extends Component {
 }
 
 const styles = StyleSheet.create({
-
+  image: {
+    height: 300,
+  }
 });
 
 /* Example usage:
