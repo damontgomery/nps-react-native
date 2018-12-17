@@ -1,0 +1,34 @@
+.park-details > .content > img {
+  max-width: 100%;
+}
+
+.park-details > .content {
+  line-height: 1.62;
+}
+
+.park-details > .content > .name {
+  display:block;
+  font-size: 1.38rem;
+
+}
+
+.park-details > .content > .description {
+  display:block;
+  font-size: 0.8rem;
+}
+
+.park-details > .content > a {
+  display:block;
+  text-decoration: none;
+  color: #005999; 
+}
+
+.park-details button {
+  background-color: #005999;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: 1rem;
+  padding: 0.8em 1.38em;
+  margin: 1rem 0;
+}
