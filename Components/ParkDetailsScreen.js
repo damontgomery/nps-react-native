@@ -6,8 +6,10 @@ import ParkDetails from './ParkDetails';
 
 class ParkDetailsScreen extends Component {
 
-  static navigationOptions = {
-    title: 'Park Details',
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: navigation.getParam('park').fullName,
+    }
   };
 
   constructor(props) {
