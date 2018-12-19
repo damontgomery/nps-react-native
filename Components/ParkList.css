@@ -1,8 +1,0 @@
-.park-list {
-  max-height: 100%;
-  overflow: scroll;
-}
-
-.park-list > .park-card {
-  margin-bottom: 1rem;
-}

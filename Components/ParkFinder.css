@@ -1,9 +1,0 @@
-.park-finder {
-  display: grid;
-  grid-gap: 1.62rem;
-  
-  grid-template:
-    "filters" fit-content(0)
-    "park-list" auto
-  ;
-}
