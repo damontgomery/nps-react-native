@@ -23,21 +23,53 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-const AppNavigator = createStackNavigator(
-  {
-    ParkFinder: {screen: ParkFinderScreen},
-    ParkBookmarks: {screen: ParkBookmarksScreen},
-    ParkDetails: {screen: ParkDetailsScreen},
-  },
-  {
-    initialRouteName: "ParkFinder"
-  }
-);
-
-const AppContainer = createAppContainer(AppNavigator);
-
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      bookmarks: new Map()
+    };
+  }
+
+  // Bookmark the park shown in the detail section.
+  handleBookmark (park) {
+    let newBookmarks = this.state.bookmarks;
+
+    // Add the current detailed park as a bookmarked park.
+    newBookmarks.set(park.parkCode, park);
+
+    this.setState({
+      bookmarks: newBookmarks
+    });
+  }
+
   render() {
+    const AppNavigator = createStackNavigator(
+      {
+        ParkFinder: {
+          screen: ParkFinderScreen
+        },
+        ParkBookmarks: {
+          screen: ParkBookmarksScreen,
+          params: {
+            bookmarks: this.state.bookmarks
+          }
+        },
+        ParkDetails: {
+          screen: ParkDetailsScreen,
+          params: {
+            handleBookmark: (park) => this.handleBookmark(park),
+          }
+        },
+      },
+      {
+        initialRouteName: "ParkFinder"
+      }
+    );
+    
+    const AppContainer = createAppContainer(AppNavigator);
+
     return (
       <ApolloProvider client={client}>
         <AppContainer/>

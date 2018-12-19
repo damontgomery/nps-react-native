@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { View, Button, Text, StyleSheet } from 'react-native';
-
-// Components
-// import ParkFinder from './ParkFinder';
+import ParkList from './ParkList';
 
 class ParkBookmarksScreen extends Component {
 
@@ -17,7 +15,10 @@ class ParkBookmarksScreen extends Component {
   render() {
     return (
       <View style={styles.app}>
-        
+        <ParkList
+          parks={Array.from(this.props.navigation.getParam('bookmarks').values())}
+          onParkClick={(park) => this.handleParkClick(park)}
+        />
       </View>
     );
   }

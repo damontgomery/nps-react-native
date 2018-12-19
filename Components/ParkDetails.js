@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, Button, StyleSheet } from 'react-native';
 
 class ParkDetails extends Component {
 
@@ -39,6 +39,10 @@ class ParkDetails extends Component {
             style={styles.bookmark}
             onClick={(event) => this.props.onBookmark()}
           >Bookmark</button> */}
+          <Button 
+            title="Bookmark"
+            onPress={() => this.props.onBookmark()}
+          />
         </View>
       );
     }

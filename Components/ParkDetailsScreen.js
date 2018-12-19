@@ -47,7 +47,7 @@ class ParkDetailsScreen extends Component {
           weatherInfo = {park.weatherInfo}
           images = {park.images}
           coordinates = {park.coordinates}
-          // onBookmark = {() => this.handleBookmark()}
+          onBookmark = {() => this.props.navigation.getParam('handleBookmark')(this.state.parkDetails)}
         />
       </View>
     );
