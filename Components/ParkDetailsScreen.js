@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 // Components
 import ParkDetails from './ParkDetails';
@@ -8,7 +8,7 @@ class ParkDetailsScreen extends Component {
 
   static navigationOptions = ({ navigation }) => {
     return {
-      title: 'Details' //navigation.getParam('park').fullName || 'Park Details',
+      title: navigation.getParam('park').fullName,
     }
   };
 
