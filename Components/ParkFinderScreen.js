@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Button, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 // Components
 import ParkFinder from './ParkFinder';
@@ -11,7 +11,7 @@ class ParkFinderScreen extends Component {
   };
 
   handleParkClick (park) {
-    this.props.navigation.navigate('ParkDetails', {park: park});
+    this.props.navigation.navigate('ParkFinderDetails', {park: park});
   }
 
   render() {
@@ -19,11 +19,6 @@ class ParkFinderScreen extends Component {
       <View style={styles.app}>
         <ParkFinder
           onParkClick={(park) => this.handleParkClick(park)}
-        />
-        <Button
-          onPress={() => this.props.navigation.navigate('ParkBookmarks')}
-          title="Bookmarks"
-          accessibilityLabel="View bookmarks"
         />
       </View>
     );

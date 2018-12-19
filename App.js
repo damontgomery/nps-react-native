@@ -7,7 +7,7 @@ import ParkBookmarksScreen from './Components/ParkBookmarksScreen';
 import ParkDetailsScreen from './Components/ParkDetailsScreen';
 
 // Navigation
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation';
 
 // GraphQL Client
 import { ApolloProvider } from 'react-apollo';
@@ -45,26 +45,41 @@ class App extends Component {
   }
 
   render() {
-    const AppNavigator = createStackNavigator(
+    const FinderStack = createStackNavigator(
       {
         ParkFinder: {
           screen: ParkFinderScreen
         },
+        ParkFinderDetails: {
+          screen: ParkDetailsScreen,
+          params: {
+            handleBookmark: (park) => this.handleBookmark(park),
+          }
+        },
+      }
+    );
+
+    const BookmarksStack = createStackNavigator(
+      {
         ParkBookmarks: {
           screen: ParkBookmarksScreen,
           params: {
             bookmarks: this.state.bookmarks
           }
         },
-        ParkDetails: {
+        ParkBookmarksDetails: {
           screen: ParkDetailsScreen,
-          params: {
-            handleBookmark: (park) => this.handleBookmark(park),
-          }
         },
+      }
+    );
+
+    const AppNavigator = createBottomTabNavigator(
+      {
+        Bookmarks: BookmarksStack,
+        Finder: FinderStack,
       },
       {
-        initialRouteName: "ParkFinder"
+        initialRouteName: "Bookmarks"
       }
     );
     

@@ -8,7 +8,7 @@ class ParkDetailsScreen extends Component {
 
   static navigationOptions = ({ navigation }) => {
     return {
-      title: navigation.getParam('park').fullName,
+      title: 'Details' //navigation.getParam('park').fullName || 'Park Details',
     }
   };
 
@@ -36,6 +36,12 @@ class ParkDetailsScreen extends Component {
   render() {
     const park = this.state.parkDetails;
 
+    let handleBookmark;
+
+    if (typeof this.props.navigation.getParam('handleBookmark') !== 'undefined') {
+      handleBookmark = () => this.props.navigation.getParam('handleBookmark')(this.state.parkDetails)
+    }
+
     return (
       <View style={styles.app}>
         <ParkDetails
@@ -47,7 +53,7 @@ class ParkDetailsScreen extends Component {
           weatherInfo = {park.weatherInfo}
           images = {park.images}
           coordinates = {park.coordinates}
-          onBookmark = {() => this.props.navigation.getParam('handleBookmark')(this.state.parkDetails)}
+          onBookmark = {handleBookmark}
         />
       </View>
     );

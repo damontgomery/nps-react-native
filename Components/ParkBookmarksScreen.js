@@ -9,7 +9,7 @@ class ParkBookmarksScreen extends Component {
   };
 
   handleParkClick (park) {
-    this.props.navigation.navigate('ParkDetails', {park: park});
+    this.props.navigation.navigate('ParkBookmarksDetails', {park: park});
   }
 
   render() {

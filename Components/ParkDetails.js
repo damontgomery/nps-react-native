@@ -24,6 +24,17 @@ class ParkDetails extends Component {
         );
       }
 
+      let bookmarkButton = null;
+
+      if (typeof this.props.onBookmark !== 'undefined'){
+        bookmarkButton = (
+          <Button 
+            title="Bookmark"
+            onPress={() => this.props.onBookmark()}
+          />
+        );
+      }
+
       content = (
         <View style={styles.content}>
           {image}
@@ -34,15 +45,8 @@ class ParkDetails extends Component {
             <Text>{this.props.description}</Text>
           </View>
           {/* <a href={this.props.url} style={styles.moreInformation}>More information</a>
-          <a href={this.props.directionsUrl} style={styles.directions}>Directions</a>
-          <button
-            style={styles.bookmark}
-            onClick={(event) => this.props.onBookmark()}
-          >Bookmark</button> */}
-          <Button 
-            title="Bookmark"
-            onPress={() => this.props.onBookmark()}
-          />
+          <a href={this.props.directionsUrl} style={styles.directions}>Directions</a>*/}
+          {bookmarkButton}
         </View>
       );
     }
