@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Button, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import ParkList from './ParkList';
 
 class ParkBookmarksScreen extends Component {
@@ -13,12 +13,27 @@ class ParkBookmarksScreen extends Component {
   }
 
   render() {
-    return (
-      <View style={styles.app}>
+    let content;
+
+    let bookmarks = Array.from(this.props.navigation.getParam('bookmarks').values());
+
+    if (bookmarks.length > 0) {
+      content = (
         <ParkList
-          parks={Array.from(this.props.navigation.getParam('bookmarks').values())}
+          parks={bookmarks}
           onParkClick={(park) => this.handleParkClick(park)}
         />
+      );
+    }
+    else {
+      content = (
+        <Text>Please find some parks to view and bookmark.</Text>
+      );
+    }
+
+    return (
+      <View style={styles.app}>
+        {content}
       </View>
     );
   }
